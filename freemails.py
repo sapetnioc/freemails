@@ -31,8 +31,6 @@ class MailBox:
             pickle.dump(self._config or {}, f)
 
     def __enter__(self):
-        # self.mailbox = imaplib.IMAP4_SSL("imap.gmail.com")
-        # self.mailbox.login(gl, gp)
         self.mailbox = imaplib.IMAP4_SSL(self.config["server"])
         self.mailbox.login(self.config["login"], self.config["password"])
         return self
